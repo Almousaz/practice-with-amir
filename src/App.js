@@ -3,8 +3,23 @@ import { Routes, Route, Link, useParams } from "react-router-dom";
 import Home from "./pages/home";
 import Products from "./pages/products";
 import Welcome from "./pages/welcome"
+import { useEffect, useState } from "react";
 
 function App() {
+
+  const  [title , setTitle] = useState("this is the default title")
+
+  useEffect (() => {
+
+    setTimeout(() => {
+      setTitle("title updaetd")
+    } , 2000)
+  } , [])
+
+
+
+
+
   return (
     <div className="App">
       <header>
@@ -17,7 +32,10 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/products" element={<Products />} />
+          <Route path="/products" element={<Products title={title} 
+          onCounterChagne={(counter)=>{
+            console.log("latest counter update in parent" , counter)
+          }} />} />
           <Route path="/products/:id" element={<Products />} />
           <Route path="/welcome" element={<Welcome />} />
         </Routes>
