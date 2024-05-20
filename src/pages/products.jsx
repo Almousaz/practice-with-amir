@@ -1,44 +1,45 @@
  import { useEffect, useState } from "react";
 import { Link , useParams } from "react-router-dom";
+import axios from "axios";
+import api from "../service/api";
 
+const Products = () => {
 
-const Products = (props) => {
-
-  const {onCounterChagne , title} = props
-  const [counter , setCounter] = useState(0);
-
-
-
- 
+  const {id} = useParams();
+  const [posts , setPosts] = useState([]);
   
 
-  useEffect(() => {
-    console.log("component rendered");
-    return() => {
-      console.log("component remove");
-    }
-   } , [])
+  useEffect(() =>{
 
-   useEffect(() => {
-    console.log("counter update with number" , counter)
-    onCounterChagne(counter);
-   } , [counter])
+    api.get("posts").then((response) => {
+      setPosts(response.data);
+    });
 
-   const handleCounterClick = () => {
-     setCounter(counter + 1)
-   }
+      // axios.get("https://jsonplaceholder.typicode.com/posts").then((response) => {
+      //   setPosts(response.data)
+      // })
+  } ,[]);
 
-   useEffect(()=>{
-    console.log("parent just updated with value" , title)
-   } , [title])
 
-    return (
+
+
+    return(
       <div>
-        <h2>Products{counter}</h2>
-        <button onClick={handleCounterClick} >add to counter</button>
-        <Link to={"/products/12"}>go to products 12</Link>
+         <h2>Posts</h2>
+         {posts.map((item , index)=>{
+          return(
+            <div key={index} style={{textAlign:"left" , display:"flex" , marginBottom:"10px", flexDirection:"column"}}  >
+              <Link to={`/products/${item.id}`}>{item.id} {item.title}</Link>
+            <span>{item.body}</span>
+            </div>
+          )
+         })}
+
       </div>
     );
   };
+
+
+
 
   export default Products

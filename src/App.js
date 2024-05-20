@@ -2,23 +2,17 @@ import "./App.css";
 import { Routes, Route, Link, useParams } from "react-router-dom";
 import Home from "./pages/home";
 import Products from "./pages/products";
-import Welcome from "./pages/welcome"
+import Welcome from "./pages/welcome";
 import { useEffect, useState } from "react";
+import ProductItem from "./pages/productItem";
+function App(props) {
+  const [title, setTitle] = useState("this is the default title");
 
-function App() {
-
-  const  [title , setTitle] = useState("this is the default title")
-
-  useEffect (() => {
-
+  useEffect(() => {
     setTimeout(() => {
-      setTitle("title updaetd")
-    } , 2000)
-  } , [])
-
-
-
-
+      setTitle("title updaetd");
+    }, 2000);
+  }, []);
 
   return (
     <div className="App">
@@ -32,11 +26,8 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/products" element={<Products title={title} 
-          onCounterChagne={(counter)=>{
-            console.log("latest counter update in parent" , counter)
-          }} />} />
-          <Route path="/products/:id" element={<Products />} />
+          <Route path="/products" element={<Products title={title} />} />
+          <Route path="/products/:id" element={<ProductItem />} />
           <Route path="/welcome" element={<Welcome />} />
         </Routes>
       </main>
