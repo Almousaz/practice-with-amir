@@ -5,6 +5,7 @@ import Products from "./pages/products";
 import Welcome from "./pages/welcome";
 import { useEffect, useState } from "react";
 import ProductItem from "./pages/productItem";
+import AgeCalculator from "./pages/AgeCalaculator";
 function App(props) {
   const [title, setTitle] = useState("this is the default title");
 
@@ -21,6 +22,7 @@ function App(props) {
           <Link to={"/"}>Home</Link>
           <Link to={"/products"}>Products</Link>
           <Link to={"/welcome"}>Welcome</Link>
+          <Link to={"/ageCalculator"}>Age Calculator</Link>
         </nav>
       </header>
       <main>
@@ -29,6 +31,7 @@ function App(props) {
           <Route path="/products" element={<Products title={title} />} />
           <Route path="/products/:id" element={<ProductItem />} />
           <Route path="/welcome" element={<Welcome />} />
+          <Route path="/ageCalculator" element={<AgeCalculator />} />
         </Routes>
       </main>
       <footer>
