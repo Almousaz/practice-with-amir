@@ -6,6 +6,9 @@ import Welcome from "./pages/welcome";
 import { useEffect, useState } from "react";
 import ProductItem from "./pages/productItem";
 import AgeCalculator from "./pages/AgeCalaculator";
+import {Header , Button} from "./components"
+
+
 function App(props) {
   const [title, setTitle] = useState("this is the default title");
 
@@ -17,14 +20,10 @@ function App(props) {
 
   return (
     <div className="App">
-      <header>
-        <nav style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
-          <Link to={"/"}>Home</Link>
-          <Link to={"/products"}>Products</Link>
-          <Link to={"/welcome"}>Welcome</Link>
-          <Link to={"/ageCalculator"}>Age Calculator</Link>
-        </nav>
-      </header>
+
+      <Header />
+      
+
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -32,6 +31,7 @@ function App(props) {
           <Route path="/products/:id" element={<ProductItem />} />
           <Route path="/welcome" element={<Welcome />} />
           <Route path="/ageCalculator" element={<AgeCalculator />} />
+          <Route path="*" element={<h2>404 Not Found</h2>} />
         </Routes>
       </main>
       <footer>
