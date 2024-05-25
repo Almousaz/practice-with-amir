@@ -1,4 +1,21 @@
 
 .button {
-    
+    background: #2780ff;
+    border: none;
+    padding: 5px 10px;
+    width: 100%;
+    border-radius: 4px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    &:hover {
+        background-color: rgb(101, 215, 253);
+    }
+    span {
+        color: white;
+        font-size: 12px;
+        
+    }
 }

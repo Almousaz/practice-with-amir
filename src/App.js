@@ -7,6 +7,8 @@ import { useEffect, useState } from "react";
 import ProductItem from "./pages/productItem";
 import AgeCalculator from "./pages/AgeCalaculator";
 import {Header , Button} from "./components"
+import Login from "./pages/login";
+import Register from "./pages/register";
 
 
 function App(props) {
@@ -24,9 +26,11 @@ function App(props) {
       <Header />
       
 
-      <main>
+      <main className="main">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/products" element={<Products title={title} />} />
           <Route path="/products/:id" element={<ProductItem />} />
           <Route path="/welcome" element={<Welcome />} />
